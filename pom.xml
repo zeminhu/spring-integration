@@ -4,6 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!--
+        A parent project allows you to define the inheritance relationship between POMs.
+        The parent POM shares certain configurations, plugins, and dependencies, along with their versions.
+        Most elements from the parent are inherited by its children — exceptions include artifactId, name, and prerequisites.
+    -->
     <groupId>com.hzsolution</groupId>
     <artifactId>spring-integration-parent</artifactId>
     <packaging>pom</packaging>
@@ -11,6 +16,8 @@
     <modules>
         <module>integration-file</module>
         <module>integration-queue</module>
+        <module>integration-common</module>
+        <module>integration-ear</module>
     </modules>
     <name>spring-integration-zh</name>
     <description>Simple ETL: read file, convert and save</description>
@@ -75,11 +82,13 @@
     </dependencies>
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 </project>
