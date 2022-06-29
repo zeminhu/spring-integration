@@ -36,16 +36,6 @@ public class IntegrationConfig {
         return new DirectChannel();
     }
 
-/*    @Bean
-    @InboundChannelAdapter(value = "fileInputChannel", poller = @Poller(fixedDelay = "1000"))
-    public MessageSource<File> fileReadingMessageSource() {
-        FileReadingMessageSource sourceReader= new FileReadingMessageSource();
-        sourceReader.setDirectory(new File(INPUT_DIR));
-        sourceReader.setFilter(new SimplePatternFileListFilter(FILE_PATTERN));
-        return sourceReader;
-    }*/
-
-
     @Bean
     @InboundChannelAdapter(value = "fileInputChannel", poller = @Poller(fixedDelay = "1000"))
     public MessageSource<File> fileReadingMessageSource() {
@@ -60,15 +50,6 @@ public class IntegrationConfig {
 
         return source;
     }
-
-/*    @Bean
-    @ServiceActivator(inputChannel= "fileInputChannel")
-    public MessageHandler fileWritingMessageHandler() {
-        FileWritingMessageHandler handler = new FileWritingMessageHandler(new File(OUTPUT_DIR));
-        handler.setFileExistsMode(FileExistsMode.REPLACE);
-        handler.setExpectReply(false);
-        return handler;
-    }*/
 
     @Bean
     public IntegrationFlow processFileFlow() {
